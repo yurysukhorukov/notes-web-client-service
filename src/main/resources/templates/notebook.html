@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leo Tolstoy's diary</title>
+</head>
+<body>
+<p th:each="note: ${notes}" th:text="${note}"></p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: notes-web-client-service
+
+server:
+  port: 9098
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
