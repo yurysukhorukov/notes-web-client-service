@@ -2,8 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Leo Tolstoy's diary</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
 </head>
 <body>
-<p th:each="note: ${notes}" th:text="${note}"></p>
+<h2 class="text-center">Дневник Льва Т.</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">date</th>
+        <th scope="col">note</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note: ${notes}">
+        <td th:text="${note.key}"></td>
+        <td th:text="${note.value}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
