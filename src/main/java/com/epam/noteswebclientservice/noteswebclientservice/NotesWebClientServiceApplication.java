@@ -6,19 +6,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 @EnableFeignClients
-@EnableEurekaClient
 @SpringBootApplication
 @Controller
 public class NotesWebClientServiceApplication {
@@ -33,9 +29,9 @@ public class NotesWebClientServiceApplication {
 	@RequestMapping("/get-notes")
 	public String getNotes(Model model) {
 		ObjectMapper mapper = new ObjectMapper();
-		Map<String, String> notes = new HashMap<>();
+		Map<String, String> notes = new TreeMap<>();
 		try {
-			notes = mapper.readValue(notesClient.getNotes(), new TypeReference<HashMap<String,String>>() {});
+			notes = mapper.readValue(notesClient.getNotes(), new TypeReference<TreeMap<String,String>>() {});
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
